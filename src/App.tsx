@@ -19,7 +19,7 @@ const DEFAULT_MEMORIES = [
   { id: 3, img: photo4, caption: "Kho vàng kho bạc<br>của ông ba nè" },
   { id: 4, img: photo5, caption: "Tiết học zui zẻ - giữ nụ cừi nì<br>cho lớp học mới nho" },
   { id: 5, img: photo6, caption: "Aaaa chú lân mổ mấy cục zàng<br>của papa kiàaaa" },
-  { id: 6, img: photo7, caption: "Papa à, xây lại profile cho năm mới nào" },
+  { id: 6, img: photo7, caption: "Papa à, xây lại profile<br>cho năm mới nào" },
   { id: 7, img: photo8, caption: "Tiếp tục giữ nụ cừi nì<br>cho năm tuổi mới nào" },
 ];
 
@@ -29,7 +29,7 @@ export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [memories] = useState(DEFAULT_MEMORIES);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const ytIframeRef = useRef<HTMLIFrameElement>(null);
 
   // Clear any legacy localStorage items to ensure all devices display bundled memories
   useEffect(() => {
@@ -40,9 +40,27 @@ export default function App() {
     }
   }, []);
 
+  const YOUTUBE_VIDEO_ID = "h53q6iIORhw";
 
-  // A free, soft piano track from a reliable public domain/CC0 source (Wikimedia Commons)
-  const AUDIO_URL = "https://upload.wikimedia.org/wikipedia/commons/9/90/Erik_Satie_-_gymnopedies_-_la_1_ere._lent_et_douloureux.ogg";
+  const playAudio = () => {
+    if (ytIframeRef.current?.contentWindow) {
+      ytIframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func: "playVideo", args: "" }),
+        "*"
+      );
+    }
+    setIsPlaying(true);
+  };
+
+  const pauseAudio = () => {
+    if (ytIframeRef.current?.contentWindow) {
+      ytIframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func: "pauseVideo", args: "" }),
+        "*"
+      );
+    }
+    setIsPlaying(false);
+  };
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -85,40 +103,45 @@ export default function App() {
 
   const handleOpen = () => {
     setStep("gallery");
-    if (audioRef.current) {
-      audioRef.current.play().catch((e) => console.log("Audio autoplay prevented", e));
-      setIsPlaying(true);
-    }
+    playAudio();
   };
 
   const toggleAudio = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      pauseAudio();
+    } else {
+      playAudio();
     }
   };
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#4A3B32] font-sans selection:bg-[#E8DCC4] overflow-x-hidden">
-      {/* Hidden Audio Player */}
-      <audio ref={audioRef} src={AUDIO_URL} loop />
+      {/* Hidden YouTube Audio Player */}
+      <iframe
+        ref={ytIframeRef}
+        src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=0&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0`}
+        title="Background Music - Happy Birthday To You"
+        allow="autoplay"
+        className="hidden pointer-events-none w-0 h-0 opacity-0 absolute"
+      />
 
       {/* Floating Audio Control (shown after opening) */}
       <AnimatePresence>
         {step !== "envelope" && (
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            onClick={toggleAudio}
-            className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-[#E8DCC4] text-[#8C6B5D] hover:text-[#4A3B32] transition-colors"
+            className="fixed top-6 right-6 z-50 flex items-center gap-2"
           >
-            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-          </motion.button>
+            <motion.button
+              onClick={toggleAudio}
+              title={isPlaying ? "Tạm dừng nhạc: Happy Birthday to You" : "Bật nhạc: Happy Birthday to You"}
+              className="p-3 rounded-full bg-white/90 backdrop-blur-sm shadow-md border border-[#E8DCC4] text-[#8C6B5D] hover:text-[#4A3B32] hover:bg-white transition-all flex items-center justify-center"
+            >
+              {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+            </motion.button>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -135,10 +158,10 @@ export default function App() {
               className="min-h-[70vh] flex flex-col items-center justify-center text-center space-y-12"
             >
               <div className="space-y-4">
-                <h1 className="font-serif text-4xl md:text-5xl italic text-[#2C241E]">
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl italic text-[#2C241E]">
                   Gửi đến Papa...
                 </h1>
-                <p className="text-[#8C6B5D] font-serif text-lg">
+                <p className="text-[#8C6B5D] font-serif text-base sm:text-lg">
                   Một bức thư nho nhỏ<br />mang theo nhiều kỉ niệm<br />của 1 tuổi mới nhó
                 </p>
               </div>
@@ -237,9 +260,9 @@ export default function App() {
                       {/* Hidden upload overlay for clean viewing */}
                     </div>
 
-                    <div className="w-full pt-4 md:pt-6 pb-2 px-2 text-center min-h-[85px] flex items-center justify-center">
+                    <div className="w-full pt-3 md:pt-6 pb-2 px-2 text-center min-h-[75px] md:min-h-[85px] flex items-center justify-center">
                       <p 
-                        className="font-script text-2xl md:text-3xl font-bold text-[#8C6B5D] tracking-wide leading-relaxed whitespace-pre-line"
+                        className="font-script text-lg sm:text-2xl md:text-3xl font-bold text-[#8C6B5D] tracking-wide leading-relaxed whitespace-pre-line"
                         dangerouslySetInnerHTML={{ __html: (memories[currentImageIndex]?.caption || "").replace(/\n/g, "<br>") }}
                       />
                     </div>
@@ -324,20 +347,20 @@ export default function App() {
               </motion.div>
 
               <div className="space-y-6 max-w-lg">
-                <h2 className="font-script text-5xl text-[#C17767]">Điều Bất Ngờ...</h2>
-                <p className="text-xl font-serif text-[#4A3B32] leading-relaxed">
+                <h2 className="font-script text-4xl sm:text-5xl text-[#C17767]">Điều Bất Ngờ...</h2>
+                <p className="text-base sm:text-lg md:text-xl font-serif text-[#4A3B32] leading-relaxed">
                   "Món quà lớn nhất mà con cho papa nhó<br />Chúc papa có 1 năm học đầy niềm zui zui zui và<br />cùng con Vươn mình kỉ nguyên số nhó"
                 </p>
                 <a
                   href="https://eduteach-web.onrender.com/" // Thay link bí mật của bạn vào đây
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative bg-white p-6 rounded-sm shadow-md border border-[#E8DCC4] hover:border-[#C17767] hover:shadow-lg transition-all duration-300 mt-8 inline-flex items-center gap-3 cursor-pointer hover:-translate-y-1"
+                  className="group relative bg-white p-5 md:p-6 rounded-sm shadow-md border border-[#E8DCC4] hover:border-[#C17767] hover:shadow-lg transition-all duration-300 mt-6 inline-flex items-center gap-3 cursor-pointer hover:-translate-y-1"
                 >
-                  <p className="text-[#8C6B5D] group-hover:text-[#C17767] italic transition-colors font-medium">
+                  <p className="text-xs sm:text-sm md:text-base text-[#8C6B5D] group-hover:text-[#C17767] italic transition-colors font-medium">
                     Hãy cùng con là 1 người tiêu dùng chất lượng nào!
                   </p>
-                  <Gift size={18} className="text-[#C17767] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                  <Gift size={18} className="text-[#C17767] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all shrink-0" />
                 </a>
               </div>
 

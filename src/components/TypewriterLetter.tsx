@@ -86,14 +86,14 @@ export function TypewriterLetter({ onNextStep }: LetterProps) {
           </button>
         )}
 
-        <div className="space-y-6 text-lg md:text-xl leading-relaxed text-[#4A3B32] font-sans min-h-[320px]">
+        <div className="space-y-6 text-base sm:text-lg md:text-xl leading-relaxed text-[#4A3B32] font-sans min-h-[320px]">
           {/* Completed Paragraphs */}
           {completedParagraphs.map((text, idx) => {
             const isSig = PARAGRAPHS[idx]?.isSignature;
             return (
               <p
                 key={idx}
-                className={isSig ? "pt-8 font-script text-3xl md:text-4xl text-[#C17767] text-right whitespace-pre-line" : "whitespace-pre-line"}
+                className={isSig ? "pt-8 font-script text-2xl sm:text-3xl md:text-4xl text-[#C17767] text-right whitespace-pre-line" : "whitespace-pre-line"}
               >
                 {text}
               </p>
@@ -105,7 +105,7 @@ export function TypewriterLetter({ onNextStep }: LetterProps) {
             <p
               className={
                 PARAGRAPHS[currentParaIndex].isSignature
-                  ? "pt-8 font-script text-3xl md:text-4xl text-[#C17767] text-right whitespace-pre-line"
+                  ? "pt-8 font-script text-2xl sm:text-3xl md:text-4xl text-[#C17767] text-right whitespace-pre-line"
                   : "whitespace-pre-line"
               }
             >
