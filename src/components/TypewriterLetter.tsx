@@ -21,7 +21,7 @@ const PARAGRAPHS = [
     text: "Zới lại sau khi m nhấn nút là có 1 món quà cho mài...mong là món quà này hỗ trợ cho m trong việc giảng dạy..có thể đi thi GV giỏi nhe 🫢🫢 món quà vậy hoi chớ vẫn chưa hoàn thiện đến mức con mong muốn nên là có gì papa có xài thì cho con feedback nhó...con sẽ cải thiện ổn áp nhứccc nhức cái léck", 
     isSignature: false 
   },
-  { text: "Tái bút con gái gịu số mụt của papa,", isSignature: true }
+  { text: "Tái bút con gái gịu\nsố mụt của papa", isSignature: true }
 ];
 
 export function TypewriterLetter({ onNextStep }: LetterProps) {
@@ -93,7 +93,7 @@ export function TypewriterLetter({ onNextStep }: LetterProps) {
             return (
               <p
                 key={idx}
-                className={isSig ? "pt-8 font-script text-3xl md:text-4xl text-[#C17767] text-right" : ""}
+                className={isSig ? "pt-8 font-script text-3xl md:text-4xl text-[#C17767] text-right whitespace-pre-line" : "whitespace-pre-line"}
               >
                 {text}
               </p>
@@ -105,8 +105,8 @@ export function TypewriterLetter({ onNextStep }: LetterProps) {
             <p
               className={
                 PARAGRAPHS[currentParaIndex].isSignature
-                  ? "pt-8 font-script text-3xl md:text-4xl text-[#C17767] text-right"
-                  : ""
+                  ? "pt-8 font-script text-3xl md:text-4xl text-[#C17767] text-right whitespace-pre-line"
+                  : "whitespace-pre-line"
               }
             >
               {currentlyTypingText}

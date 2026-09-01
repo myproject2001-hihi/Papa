@@ -136,10 +136,10 @@ export default function App() {
             >
               <div className="space-y-4">
                 <h1 className="font-serif text-4xl md:text-5xl italic text-[#2C241E]">
-                  Gửi đến cậu...
+                  Gửi đến Papa...
                 </h1>
                 <p className="text-[#8C6B5D] font-serif text-lg">
-                  Một bức thư nhỏ mang theo nhiều thương nhớ.
+                  Một bức thư nho nhỏ<br />mang theo nhiều kỉ niệm<br />
                 </p>
               </div>
 
@@ -287,7 +287,7 @@ export default function App() {
                   onClick={() => setStep("letter")}
                   className="px-8 py-3 bg-[#4A3B32] text-white rounded-full font-serif flex items-center gap-2 hover:bg-[#2C241E] transition-colors shadow-sm"
                 >
-                  <span>Đọc thư của tớ nhé</span>
+                  <span>Đọc thư của con nhóe</span>
                   <BookOpen size={18} />
                 </button>
               </motion.div>
@@ -326,16 +326,16 @@ export default function App() {
               <div className="space-y-6 max-w-lg">
                 <h2 className="font-script text-5xl text-[#C17767]">Điều Bất Ngờ...</h2>
                 <p className="text-xl font-serif text-[#4A3B32] leading-relaxed">
-                  "Món quà lớn nhất mà chúng ta có được, chính là sự hiện diện của nhau trong cuộc đời này."
+                  "Món quà lớn nhất mà con cho papa nhó<br />Chúc papa có 1 năm học đầy niềm zui zui zui và cùng con Vươn mình kỉ nguyên số nhó"
                 </p>
                 <a
-                  href="https://example.com" // Thay link bí mật của bạn vào đây
+                  href="https://eduteach-web.onrender.com/" // Thay link bí mật của bạn vào đây
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative bg-white p-6 rounded-sm shadow-md border border-[#E8DCC4] hover:border-[#C17767] hover:shadow-lg transition-all duration-300 mt-8 inline-flex items-center gap-3 cursor-pointer hover:-translate-y-1"
                 >
                   <p className="text-[#8C6B5D] group-hover:text-[#C17767] italic transition-colors font-medium">
-                    (Voucher ôm 1 cái thật chặt - Không thời hạn)
+                    Hãy cùng con là 1 người tiêu dùng chất lượng nào!
                   </p>
                   <Gift size={18} className="text-[#C17767] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
                 </a>
