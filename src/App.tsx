@@ -203,7 +203,7 @@ export default function App() {
                 <h2 className="font-serif text-3xl italic text-[#2C241E]">Ký Ức Đẹp...</h2>
                 <div className="w-12 h-[1px] bg-[#C17767] mx-auto"></div>
                 <p className="text-[#8C6B5D] font-serif text-sm md:text-base">
-                  Chậm lại một nhịp để nhìn lại những khoảng khoảnh quý giá nhé
+                  Chậm lại một nhịp để nhìn lại những khoảnh khắc quý giá nhé
                 </p>
               </div>
 
