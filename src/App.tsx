@@ -139,7 +139,7 @@ export default function App() {
                   Gửi đến Papa...
                 </h1>
                 <p className="text-[#8C6B5D] font-serif text-lg">
-                  Một bức thư nho nhỏ<br />mang theo nhiều kỉ niệm<br />
+                  Một bức thư nho nhỏ<br />mang theo nhiều kỉ niệm<br />của 1 tuổi mới nhó
                 </p>
               </div>
 
@@ -326,7 +326,7 @@ export default function App() {
               <div className="space-y-6 max-w-lg">
                 <h2 className="font-script text-5xl text-[#C17767]">Điều Bất Ngờ...</h2>
                 <p className="text-xl font-serif text-[#4A3B32] leading-relaxed">
-                  "Món quà lớn nhất mà con cho papa nhó<br />Chúc papa có 1 năm học đầy niềm zui zui zui và cùng con Vươn mình kỉ nguyên số nhó"
+                  "Món quà lớn nhất mà con cho papa nhó<br />Chúc papa có 1 năm học đầy niềm zui zui zui và<br />cùng con Vươn mình kỉ nguyên số nhó"
                 </p>
                 <a
                   href="https://eduteach-web.onrender.com/" // Thay link bí mật của bạn vào đây

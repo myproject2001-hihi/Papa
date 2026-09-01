@@ -10,18 +10,18 @@ interface LetterProps {
 const PARAGRAPHS = [
   { text: "Hello papa,", isSignature: false },
   { 
-    text: "Tính ra tới nay đã trò 1 tháng sanh nhật của papa rồi nhỉ ?? 3 tháng hè này bên con bận quá, đủ thứ chuyện nên cả chuyện con làm luận văn lẫn chuyện con đã hứa vs papa con chưa làm nữa....Ba chờ tháng này con sẽ quay lại vs papa nhe 👉👈", 
+    text: "Tính ra tới nay đã tròn 1 tháng sanh nhật của papa rồi nhỉ ?? 3 tháng hè này bên con bận quá, đủ thứ chuyện nên cả chuyện con làm luận văn lẫn chuyện con đã hứa vs papa con chưa làm nữa....Ba chờ tháng này...con sẽ quay lại vs papa nhe 👉👈", 
     isSignature: false 
   },
   { 
-    text: "Xả vai cái nè 😤😤...tuổi mới rồi...nhận lớp dạy tụi nhỏ đàng hoàng è...ko dạy tụi nhỏ làm mấy chiện tầm xàm nữa nhe...lo cho tụi nhỏ thì lo cho bản thân mình ii nhe...giữ sức khỏe...kiếm zợ nữa chớ", 
+    text: "Xả vai cái nè 😤😤...tuổi mới rồi...nhận lớp dạy tụi nhỏ đàng hoàng è...ko dạy tụi nhỏ làm mấy chiện tầm xàm nữa nhe...lo cho tụi nhỏ thì lo cho bản thân mình ii nhe...giữ sức khỏe...kiếm zợ nữa chớ...tròn chĩnh 25 tuổi dòi", 
     isSignature: false 
   },
   { 
     text: "Zới lại sau khi m nhấn nút là có 1 món quà cho mài...mong là món quà này hỗ trợ cho m trong việc giảng dạy..có thể đi thi GV giỏi nhe 🫢🫢 món quà vậy hoi chớ vẫn chưa hoàn thiện đến mức con mong muốn nên là có gì papa có xài thì cho con feedback nhó...con sẽ cải thiện ổn áp nhứccc nhức cái léck", 
     isSignature: false 
   },
-  { text: "Tái bút con gái gịu\nsố mụt của papa", isSignature: true }
+  { text: "P.S. Votre fille adorée", isSignature: true }
 ];
 
 export function TypewriterLetter({ onNextStep }: LetterProps) {
