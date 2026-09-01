@@ -1,0 +1,6 @@
+{
+  "name": "Bức Thư Kỷ Niệm",
+  "description": "Một trang web gửi gắm yêu thương, hình ảnh và âm nhạc đến người thân.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
